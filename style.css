@@ -1,13 +1,20 @@
 :root {
-	--purple:  rgb(128, 0, 128);
 	--red: rgb(255, 0, 0);
-
 }
-
-
 
 body {
 	font-family: serif;
+	background-image: url("/connection-3234929_1280.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* height: 100vh;
+	width: 100vw; */
+}
+main {
+	padding-top: 2vh;
+	background-color: rgba(255, 255, 255, 0.06);
+	margin: 0 15vw;
+	border-radius: 15px;
 }
 .container {
 	display: flex;
@@ -67,21 +74,31 @@ body {
 
 h1 {
 	text-align: center;
-	color: var(--purple);
+	color: var(--red);
 	font-weight: bold;
 	font-size: 3rem;
 	margin: 0.6rem 0;
+	width: 30vw;
+	background-color: rgba(255, 255, 255, 0.15);
+	border-radius: 15px;
 }
-.new_game{
+header {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.new_game {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
 	margin-top: 3rem;
-	
+
 	margin: 5vh 25vw;
-	}
-.img_container{
+}
+.img_container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -89,9 +106,8 @@ h1 {
 .osiol {
 	margin-top: 2vh;
 	height: 120px;
-
 }
-.reset{
+.reset {
 	cursor: pointer;
 	/* width: 400px; */
 	padding: 10px;
@@ -102,6 +118,6 @@ h1 {
 	color: rgb(30, 48, 90);
 	/* max-width: 400px; */
 }
-.reset:hover{
+.reset:hover {
 	transform: scale(1.05);
 }

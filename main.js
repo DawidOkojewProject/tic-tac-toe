@@ -137,12 +137,17 @@ function pick(event) {
 		// wrapper.classList.add('test')
 		return console.log("Koniec gry");
 	}
+	if (round > 9) {
+		winner.textContent = "Remis";
+		console.log("Remis");
+	}
 }
 
 const reset = () => {
 	p1 = "";
 	p2 = "";
-	winner.textContent = "";
+	round = 0;
+	winner.textContent = '';
 	for (let i = 0; i < boxes.length; i++) {
 		boxes[i].classList.remove("test");
 		boxes[i].textContent = "";
