@@ -2,9 +2,16 @@ const restart = document.querySelector('.reset')
 const wrapper = document.querySelector('.wrapper')
 const winner = document.querySelector('.winner')
 const boxes = [...document.querySelectorAll('.box')]
-const main = document.querySelector('body')
+const body = document.querySelector('body')
+const main = document.querySelector('.main')
 const bulb = document.querySelector('#bulb')
-let isUserTurn = true;
+const solo = document.querySelector('.solo')
+const multi = document.querySelector('.multi')
+const menu = document.querySelector('.menu')
+
+let player
+
+let isUserTurn = true
 const player1 = 'O'
 let p1 = []
 const player2 = 'X'
@@ -37,38 +44,43 @@ function isBoxEmpty(number) {
 }
 
 function pick(event) {
-	if (winner.textContent !== '' || !isUserTurn) return; // Gra skończona lub nie jest kolej użytkownika
-	const turn = round % 2 === 0 ? player2 : player1;
-	const number = event.target.id;
-	if (!isBoxEmpty(Number(number))) return; // Sprawdź, czy pole jest wolne
+	if (winner.textContent !== '' || !isUserTurn) return // Gra skończona lub nie jest kolej użytkownika
+	const turn = round % 2 === 0 ? player2 : player1
+	const number = event.target.id
+	if (!isBoxEmpty(Number(number))) return // Sprawdź, czy pole jest wolne
 	if (turn === player1) {
-	  p1.push(Number(number));
+		p1.push(Number(number))
 	} else {
-	  p2.push(Number(number));
+		p2.push(Number(number))
 	}
-	event.target.classList.add('test');
-	event.target.textContent = turn;
-	round++;
+	event.target.classList.add('test')
+	event.target.textContent = turn
+	round++
 	if (checkWin(p1)) {
-	  console.log('Gracz nr1 wygrał');
-	  winner.textContent = 'Wygrał gracz nr 1';
-	  boxes.forEach(box => box.classList.add('test'));
+		console.log('Gracz nr1 wygrał')
+		winner.textContent = 'Wygrał gracz nr 1'
+		boxes.forEach(box => box.classList.add('test'))
 	} else if (checkWin(p2)) {
-	  console.log('Gracz nr2 wygrał');
-	  winner.textContent = 'Wygrał gracz nr 2';
-	  boxes.forEach(box => box.classList.add('test'));
+		console.log('Gracz nr2 wygrał')
+		winner.textContent = 'Wygrał gracz nr 2'
+		boxes.forEach(box => box.classList.add('test'))
 	} else if (round > 9) {
-	  winner.textContent = 'Remis';
-	  console.log('Remis');
-	} else if (round % 2 === 0) {
-	  // Ruch komputera tylko w turach parzystych
-	  isUserTurn = false; // Zablokuj możliwość kliknięcia użytkownika
-	  setTimeout(() => {
-		computerMove();
-		isUserTurn = true; // Odblokuj możliwość kliknięcia użytkownika po ruchu komputera
-	  }, 1000); // 1000 ms (1 sekunda) opóźnienia
+		winner.textContent = 'Remis'
+		console.log('Remis')
+	} else if (round % 2 === 0 && player == 1) {
+		// Ruch komputera tylko w turach parzystych
+		isUserTurn = false // Zablokuj możliwość kliknięcia użytkownika
+		setTimeout(() => {
+			computerMove()
+			isUserTurn = true // Odblokuj możliwość kliknięcia użytkownika po ruchu komputera
+		}, 1000) // 1000 ms (1 sekunda) opóźnienia
+	} else if (round % 2 === 0 && player == 2) {
+		
+		player = player === player1 ? player2 : player1
+		winner.textContent = `Ruch gracza ${player}`
+		isUserTurn = true
 	}
-  }
+}
 
 function computerMove() {
 	if (winner.textContent !== '') return // Gra skończona, nie można wykonywać ruchów
@@ -105,14 +117,28 @@ const reset = () => {
 		box.classList.remove('test')
 		box.textContent = ''
 	})
+	menu.classList.remove('none')
+	main.classList.add('none')
 }
 
 const darkMode = () => {
-	main.classList.toggle('dark-md')
+	body.classList.toggle('dark-md')
 	boxes.forEach(box => box.classList.toggle('dark-md'))
 	restart.classList.toggle('dark-md')
+}
+const soloGame = () => {
+	menu.classList.add('none')
+	main.classList.remove('none')
+	player = 1
+}
+const multiGame = () => {
+	menu.classList.add('none')
+	main.classList.remove('none')
+	player = 2
 }
 
 restart.addEventListener('click', reset)
 boxes.forEach(box => box.addEventListener('click', pick))
 bulb.addEventListener('click', darkMode)
+solo.addEventListener('click', soloGame)
+multi.addEventListener('click', multiGame)
