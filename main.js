@@ -49,8 +49,10 @@ function pick(event) {
 	const number = event.target.id
 	if (!isBoxEmpty(Number(number))) return // Sprawdź, czy pole jest wolne
 	if (turn === player1) {
+		// winner.textContent = 'Tura gracza nr 1'
 		p1.push(Number(number))
 	} else if(turn === player2 && player == 2) {
+		// winner.textContent = 'Tura gracza nr 2'
 		p2.push(Number(number))
 	}
 	event.target.classList.add('test')
@@ -68,8 +70,10 @@ function pick(event) {
 		winner.textContent = 'Remis'
 		console.log('Remis')
 	} else if (round % 2 === 0 && player == 1) {
+		
 		// Ruch komputera tylko w turach parzystych
 		isUserTurn = false // Zablokuj możliwość kliknięcia użytkownika
+
 		setTimeout(() => {
 			computerMove()
 			isUserTurn = true // Odblokuj możliwość kliknięcia użytkownika po ruchu komputera
