@@ -50,7 +50,7 @@ function pick(event) {
 	if (!isBoxEmpty(Number(number))) return // Sprawdź, czy pole jest wolne
 	if (turn === player1) {
 		p1.push(Number(number))
-	} else {
+	} else if(turn === player2 && player == 2) {
 		p2.push(Number(number))
 	}
 	event.target.classList.add('test')
@@ -74,12 +74,7 @@ function pick(event) {
 			computerMove()
 			isUserTurn = true // Odblokuj możliwość kliknięcia użytkownika po ruchu komputera
 		}, 1000) // 1000 ms (1 sekunda) opóźnienia
-	} else if (round % 2 === 0 && player == 2) {
-		
-		player = player === player1 ? player2 : player1
-		winner.textContent = `Ruch gracza ${player}`
-		isUserTurn = true
-	}
+	} 
 }
 
 function computerMove() {
