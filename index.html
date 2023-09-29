@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="pl">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Gra kółko i krzyżyk</title>
-		<script
-			src="https://kit.fontawesome.com/bd16a73ff7.js"
-			crossorigin="anonymous"
-		></script>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<main>
-			<header>
-				<h1>Kółko i krzyżyk</h1>
-				<div class="winner"></div>
-			</header>
-			<div class="container">
-				<div class="wrapper">
-					<div class="box" id="1"></div>
-					<div class="box" id="2"></div>
-					<div class="box" id="3"></div>
-					<div class="box" id="4"></div>
-					<div class="box" id="5"></div>
-					<div class="box" id="6"></div>
-					<div class="box" id="7"></div>
-					<div class="box" id="8"></div>
-					<div class="box" id="9"></div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Gra kółko i krzyżyk</title>
+	<script src="https://kit.fontawesome.com/bd16a73ff7.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+		<div id="bulb-container">
+		<i id="bulb" class="fa-regular fa-lightbulb"></i>
+		</div>
+		<header>
+			
+				<div>
+					<h1>Kółko i krzyżyk</h1>
+					<div class="winner"></div>
 				</div>
+				
+			
+		</header>
+		<div class="container">
+			<div class="wrapper">
+				<div class="box" id="1"></div>
+				<div class="box" id="2"></div>
+				<div class="box" id="3"></div>
+				<div class="box" id="4"></div>
+				<div class="box" id="5"></div>
+				<div class="box" id="6"></div>
+				<div class="box" id="7"></div>
+				<div class="box" id="8"></div>
+				<div class="box" id="9"></div>
 			</div>
-			<section class="new_game">
-				<button class="reset">Ja chce jeszcze raz</button>
-				<div class="img_container">
-					<img src="Osioł_(Shrek).webp" alt="osiol shrek" class="osiol" />
-				</div>
-			</section>
-		</main>
-		<script src="main.js"></script>
-	</body>
+		</div>
+		<section class="new_game">
+			<button class="reset">Ja chce jeszcze raz</button>
+			<div class="img_container">
+				<img src="Osioł_(Shrek).webp" alt="osiol shrek" class="osiol" />
+			</div>
+		</section>
+	</main>
+	<script src="main.js"></script>
+</body>
+
 </html>
