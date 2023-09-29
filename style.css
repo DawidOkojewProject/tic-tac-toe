@@ -21,7 +21,7 @@ main {
 	grid-template-rows: repeat(3, 100px);
 	background-color: rgba(237, 233, 233, 0.5);
 	cursor: pointer;
-	font-size: 4rem;
+	/* font-size: 4rem; */
 	text-align: center;
 }
 .box {
@@ -32,11 +32,7 @@ main {
 	width: 100px;
 	height: 100px;
 	background-color: #fff;
-}
-.winner {
-	margin: 1rem 0;
-	font-size: 3rem;
-	text-align: center;
+	font-size: 4rem;
 }
 .box:hover {
 	transform: scale(1.05);
@@ -52,10 +48,15 @@ main {
 h1 {
 	text-align: center;
 	font-weight: bold;
-	font-size: 3rem;
+	font-size: 1.5rem;
 	margin: 0.6rem 0;
 	width: 30vw;
 	border-radius: 15px;
+}
+.winner {
+	margin: 1rem 0;
+	font-size: 1.1rem;
+	text-align: center;
 }
 .top-section {
 	display: flex;
@@ -66,15 +67,14 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: row;
+	flex-direction: column;
 }
 .new_game {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	text-align: center;
-	margin-top: 3rem;
-	margin: 5vh 25vw;
+	align-items: center;
+	margin-top: 5vh;
 }
 .img_container {
 	display: flex;
@@ -88,9 +88,10 @@ header {
 .reset {
 	cursor: pointer;
 	padding: 10px;
+
 	border-radius: 10px;
 	transition: transform 0.4s;
-	font-size: 1.2rem;
+	font-size: 0.8rem;
 }
 .reset:hover {
 	transform: scale(1.05);
@@ -108,4 +109,29 @@ header {
 #bulb {
 	font-size: 2rem;
 	padding: 5px;
+}
+
+@media (min-width: 580px) {
+	.reset {
+		font-size: 1rem;
+	}
+
+	h1 {
+		font-size: 1.6rem;
+	}
+	.winner {
+		font-size: 1.2rem;
+	}
+}
+
+@media (min-width: 776px) {
+	.reset {
+		font-size: 1.2rem;
+	}
+	h1 {
+		font-size: 1.9rem;
+	}
+	.winner {
+		font-size: 1.6rem;
+	}
 }
