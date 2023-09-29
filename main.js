@@ -4,7 +4,7 @@ const winner = document.querySelector('.winner')
 const boxes = [...document.querySelectorAll('.box')]
 const main = document.querySelector('body')
 const bulb = document.querySelector('#bulb')
-
+let isUserTurn = true;
 const player1 = 'O'
 let p1 = []
 const player2 = 'X'
@@ -37,34 +37,38 @@ function isBoxEmpty(number) {
 }
 
 function pick(event) {
-	if (winner.textContent !== '') return // Gra skończona, nie można wykonywać ruchów
-	const turn = round % 2 === 0 ? player2 : player1
-	const number = event.target.id
-	if (!isBoxEmpty(Number(number))) return // Sprawdź, czy pole jest wolne
+	if (winner.textContent !== '' || !isUserTurn) return; // Gra skończona lub nie jest kolej użytkownika
+	const turn = round % 2 === 0 ? player2 : player1;
+	const number = event.target.id;
+	if (!isBoxEmpty(Number(number))) return; // Sprawdź, czy pole jest wolne
 	if (turn === player1) {
-		p1.push(Number(number))
+	  p1.push(Number(number));
 	} else {
-		p2.push(Number(number))
+	  p2.push(Number(number));
 	}
-	event.target.classList.add('test')
-	event.target.textContent = turn
-	round++
+	event.target.classList.add('test');
+	event.target.textContent = turn;
+	round++;
 	if (checkWin(p1)) {
-		console.log('Gracz nr1 wygrał')
-		winner.textContent = 'Wygrał gracz nr 1'
-		boxes.forEach(box => box.classList.add('test'))
+	  console.log('Gracz nr1 wygrał');
+	  winner.textContent = 'Wygrał gracz nr 1';
+	  boxes.forEach(box => box.classList.add('test'));
 	} else if (checkWin(p2)) {
-		console.log('Gracz nr2 wygrał')
-		winner.textContent = 'Wygrał gracz nr 2'
-		boxes.forEach(box => box.classList.add('test'))
+	  console.log('Gracz nr2 wygrał');
+	  winner.textContent = 'Wygrał gracz nr 2';
+	  boxes.forEach(box => box.classList.add('test'));
 	} else if (round > 9) {
-		winner.textContent = 'Remis'
-		console.log('Remis')
+	  winner.textContent = 'Remis';
+	  console.log('Remis');
 	} else if (round % 2 === 0) {
-		// Ruch komputera tylko w turach parzystych
-		computerMove()
+	  // Ruch komputera tylko w turach parzystych
+	  isUserTurn = false; // Zablokuj możliwość kliknięcia użytkownika
+	  setTimeout(() => {
+		computerMove();
+		isUserTurn = true; // Odblokuj możliwość kliknięcia użytkownika po ruchu komputera
+	  }, 1000); // 1000 ms (1 sekunda) opóźnienia
 	}
-}
+  }
 
 function computerMove() {
 	if (winner.textContent !== '') return // Gra skończona, nie można wykonywać ruchów
@@ -111,4 +115,4 @@ const darkMode = () => {
 
 restart.addEventListener('click', reset)
 boxes.forEach(box => box.addEventListener('click', pick))
-bulb.addEventListener('click',darkMode)
+bulb.addEventListener('click', darkMode)
